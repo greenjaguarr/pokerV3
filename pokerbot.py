@@ -198,7 +198,7 @@ async def handle_networking(websocket: websockets.asyncio.connection.Connection,
 # Main game loop
 async def game_loop(websocket,queue:asyncio.Queue):
 
-    actions = [ "check","check","check","check","check","check","check","check","check", "pass", "raise 10", "raise 20", "raise 50", "raise 100"]
+    actions = [ "check","check","check","check","check","check","check","check","pass", "pass", "raise 10", "raise 20", "raise 50", "raise 1"]
     while True:
         await asyncio.sleep(1)
         async with STATE_LOCK:

@@ -12,4 +12,6 @@ game logic:
 #speler.is_AanDeBeurt # bool
 #speler.is_Gepast # bool
 
-maak comparison for hands
+# maak comparison for hands
+
+Zorg er voor dat de handen van gepaste mensen niet worden laten gezien nederlands
