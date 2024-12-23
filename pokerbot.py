@@ -169,7 +169,7 @@ async def send_messages(websocket, queue, my_uuid:str)->None:
             queue.task_done()
         except websockets.ConnectionClosed:
             print("Connection to server lost.")
-            break
+            exit()
         except Exception as e:
             print(f"Error sending message: {e}")
 
