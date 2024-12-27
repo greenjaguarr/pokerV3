@@ -251,7 +251,7 @@ async def read_messages(websocket,client_uuid)->None:
 
 
         elif event["type"] == 'gamestate':
-            print(f"Received gamestate update")
+            # print(f"Received gamestate update")
             try:
                 nieuwe_state = GameState()
                 # download gamestate
@@ -412,7 +412,7 @@ async def game_loop(websocket,queue:asyncio.Queue):
 
         pygame.display.flip()
         await asyncio.sleep(0)
-        clock.tick(30)
+        clock.tick(30) # limit the game to 30 fps
 
     await websocket.close()
     pygame.quit()
@@ -426,8 +426,8 @@ async def main():
     
     queue = asyncio.Queue() # this queue stores all messages to bne sent.
 
-    # async with websockets.connect("ws://192.168.178.110:8000") as websocket:
-    async with websockets.connect("ws://IPV4 address") as websocket:
+    # async with websockets.connect("ws://IPv4 address:8000") as websocket:
+    async with websockets.connect() as websocket:
         # Create tasks for Pygame and receiving messages
         pygame_task = asyncio.create_task(game_loop(websocket,queue))
         network_task = asyncio.create_task(handle_networking(websocket,naam,queue))

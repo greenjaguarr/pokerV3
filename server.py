@@ -452,7 +452,7 @@ class GameState:
 
         # BEGIN
 
-        self.eerste_fase(iterator)
+        self.eerste_fase(iterator) # dit beunt de blinds
         print("[DEBUG] 0 kaarten in river")
         print("[DEBUG] Actieve spelers: ",self.actieve_spelers())
         await self.bied_fase(iterator)
@@ -610,9 +610,10 @@ async def network_manager(websocket):
 
 async def main():
     game_task = asyncio.create_task(game_loop())  # Start de game loop
-    server_task = serve(network_manager,"IPV4 address", 8000)  # WebSocket server
+    # server_task = serve(network_manager,"IPV4 address", 8000)  # WebSocket server
+    server_task = serve(network_manager,"", 8000)  # WebSocket server
 
-    print("[INFO] Server gestart op ws://192.168.178.110:8000")
+    print("[INFO] Server gestart op ws://:8000")
     await asyncio.gather(game_task, server_task)  # Voer beide taken parallel uit
 
 

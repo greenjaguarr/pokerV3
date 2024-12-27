@@ -223,7 +223,8 @@ async def main():
     
     queue = asyncio.Queue() # this queue stores all messages to bne sent.
 
-    async with websockets.connect("ws://25.49.243.195:8000") as websocket:
+    # async with websockets.connect("ws://IPv4:8000") as websocket:
+    async with websockets.connect("ws://:8000") as websocket:
         # Create tasks for Pygame and receiving messages
         pygame_task = asyncio.create_task(game_loop(websocket,queue))
         network_task = asyncio.create_task(handle_networking(websocket,naam,queue))
